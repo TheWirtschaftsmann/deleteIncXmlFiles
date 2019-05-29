@@ -25,3 +25,5 @@ endform.
 
 start-of-selection.
   perform main.
+
+  call screen 100.

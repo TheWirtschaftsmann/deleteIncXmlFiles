@@ -32,14 +32,20 @@ class lcl_app implementation.
 
   method run.
 
-    data: lt_data type zua_j1un_xml_selector=>ty_tt_data.
+    data:
+      lo_view type ref to zua_j1un_xml_alv_viewer,
+      lt_data type zua_j1un_xml_selector=>ty_tt_data.
 
     lt_data = zua_j1un_xml_selector=>select_xml_files(
       ir_bukrs = is_selopts-bukrs
       ir_gjahr = is_selopts-gjahr
       ir_stcd1 = is_selopts-stcd1 ).
 
-    break-point.
+    create object lo_view
+      exporting
+        it_data = lt_data.
+
+    lo_view->display_report( ).
 
   endmethod.
 
