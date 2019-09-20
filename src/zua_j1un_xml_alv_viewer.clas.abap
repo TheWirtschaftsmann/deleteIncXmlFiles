@@ -51,10 +51,10 @@ endmethod.
 
 method build_layout.
 
-  rs_layout-sel_mode    = 'A'.
-  rs_layout-zebra       = 'X'.
-  rs_layout-cwidth_opt  = 'X'.
-  rs_layout-ctab_fname = 'COLORCELL'.
+  rs_layout-sel_mode    = 'A'.         " User can select the line
+  rs_layout-zebra       = 'X'.         " Zebra display
+  rs_layout-cwidth_opt  = 'X'.         " Optimization of columns width
+  rs_layout-ctab_fname  = 'COLORCELL'. " Cells coloring
 
 endmethod.
 
