@@ -200,6 +200,12 @@
     </item>
     <item>
      <ID>I</ID>
+     <KEY>002</KEY>
+     <ENTRY>XML-files attributes</ENTRY>
+     <LENGTH>132</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
      <KEY>100</KEY>
      <ENTRY>List of unlinked XML-files for tax documents</ENTRY>
      <LENGTH>70</LENGTH>
@@ -228,6 +234,13 @@
      <KEY>S_STCD1</KEY>
      <ENTRY>.</ENTRY>
      <LENGTH>24</LENGTH>
+     <SPLIT>D</SPLIT>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>S_XBLNR</KEY>
+     <ENTRY>.</ENTRY>
+     <LENGTH>9</LENGTH>
      <SPLIT>D</SPLIT>
     </item>
    </TPOOL>

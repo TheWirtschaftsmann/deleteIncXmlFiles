@@ -17,6 +17,7 @@ form main.
   ls_selopt-bukrs = s_bukrs[].
   ls_selopt-gjahr = s_gjahr[].
   ls_selopt-stcd1 = s_stcd1[].
+  ls_selopt-xblnr = s_xblnr[].
 
   create object lo_app.
   lo_app->run( is_selopts = ls_selopt ).
