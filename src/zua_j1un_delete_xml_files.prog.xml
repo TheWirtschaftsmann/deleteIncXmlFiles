@@ -107,6 +107,7 @@
       <TEXT_NAME>ICON_DELETE</TEXT_NAME>
       <ICON_ID>@11@</ICON_ID>
       <FUN_TEXT>Delete XML-file</FUN_TEXT>
+      <ICON_TEXT>Delete XML-file</ICON_TEXT>
       <INFO_TEXT>Delete XML-file without tax document</INFO_TEXT>
      </RSMPE_FUNT>
      <RSMPE_FUNT>
@@ -188,6 +189,12 @@
       <INT_NOTE>Main report status</INT_NOTE>
      </RSMPE_ATRT>
     </DOC>
+    <TIT>
+     <RSMPE_TITT>
+      <CODE>GUI_TITLE</CODE>
+      <TEXT>List of XML-files not matched against tax documents</TEXT>
+     </RSMPE_TITT>
+    </TIT>
    </CUA>
    <TPOOL>
     <item>

@@ -16,9 +16,9 @@ endmodule.
 
 module handle_pai input.
   case ok_code.
-    when 'E' or 'ECAN'.   " Adjust to 'BACK' or 'EXIT'
+    when 'BACK' or 'EXIT'.
       leave to screen 0.
-    when 'ENDE'.          " Adjust to 'CANCEL'
+    when 'CANCEL'.
       leave program .
   endcase.
-endmodule.                " handle_pai  input
+endmodule.
