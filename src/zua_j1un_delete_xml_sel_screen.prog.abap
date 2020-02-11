@@ -14,3 +14,16 @@ selection-screen begin of block b2 with frame title text-002.
 select-options:
   s_xblnr for j_1ufdi_match_xml_document-xml_xblnr.
 selection-screen end of block b2.
+
+form main.
+
+  data: ls_selopt type ty_selopts.
+
+  ls_selopt-bukrs = s_bukrs[].
+  ls_selopt-gjahr = s_gjahr[].
+  ls_selopt-stcd1 = s_stcd1[].
+  ls_selopt-xblnr = s_xblnr[].
+
+  create object lo_controller exporting is_selopts = ls_selopt.
+
+endform.
