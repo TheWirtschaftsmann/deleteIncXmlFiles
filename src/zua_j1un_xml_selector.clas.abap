@@ -28,7 +28,7 @@ public section.
       !IR_STCD1 type R_STCD1
       !IR_XBLNR type R_XBLNR
     returning
-      value(RT_DATA) type ty_tt_data .
+      value(RT_DATA) type TY_TT_DATA .
   protected section.
   private section.
 ENDCLASS.

@@ -3,18 +3,19 @@
 *&---------------------------------------------------------------------*
 class lcl_controller definition.
   public section.
-    methods: constructor importing is_selopts type ty_selopts.
+    methods: constructor           importing is_selopts type ty_selopts.
+    methods: process_before_output importing iv_container type ref to cl_gui_custom_container.
+    methods: handle_user_action    importing iv_ucomm     type sy-ucomm.
     methods: set_gui_status.
-    methods: process_before_output
-                importing
-                  i_container type ref to cl_gui_custom_container.
+
   private section.
-    data: as_selopts   type ty_selopts,
+    data:
+          o_view       type ref to lcl_view,
+          as_selopts   type ty_selopts,
           at_xml_files type zua_j1un_xml_selector=>ty_tt_data.
 endclass.
 
 class lcl_controller implementation.
-
   method constructor.
     as_selopts = is_selopts.
   endmethod.
@@ -25,20 +26,28 @@ class lcl_controller implementation.
   endmethod.
 
   method process_before_output.
-   data: lo_view type ref to zua_j1un_xml_alv_viewer.
-
     at_xml_files = zua_j1un_xml_selector=>select_xml_files(
       ir_bukrs = as_selopts-bukrs
       ir_gjahr = as_selopts-gjahr
       ir_stcd1 = as_selopts-stcd1
       ir_xblnr = as_selopts-xblnr ).
 
-    create object lo_view
+    create object me->o_view
       exporting
-        it_data = at_xml_files.
+        iv_parent = iv_container.
 
-    lo_view->display_report( ).
+    me->o_view->setup_alv( changing ct_data = at_xml_files ).
+  endmethod.
 
+  method handle_user_action.
+    data: lt_files type zua_j1un_xml_selector=>ty_tt_data.
+
+    case iv_ucomm.
+      when 'DELETE'.
+        "lt_files = mo_view->get_selected_lines( ).
+      when others.
+        " Do nothing. Add handling of other user actions here
+    endcase.
   endmethod.
 
 endclass.

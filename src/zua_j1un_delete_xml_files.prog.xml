@@ -20,13 +20,22 @@
       <DESCRIPT>Main report screen</DESCRIPT>
       <TYPE>N</TYPE>
       <NEXTSCREEN>0100</NEXTSCREEN>
-      <LINES>027</LINES>
-      <COLUMNS>120</COLUMNS>
+      <LINES>200</LINES>
+      <COLUMNS>255</COLUMNS>
      </HEADER>
      <CONTAINERS>
       <RPY_DYCATT>
        <TYPE>SCREEN</TYPE>
        <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>CUST_CTRL</TYPE>
+       <NAME>MAINCONTAINER</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>255</LENGTH>
+       <HEIGHT>200</HEIGHT>
       </RPY_DYCATT>
      </CONTAINERS>
      <FIELDS>

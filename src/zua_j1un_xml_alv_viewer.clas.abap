@@ -1,4 +1,4 @@
-class ZUA_J1UN_XML_ALV_VIEWER definition
+class ZUA_J1UN_XML_ALV_VIEWER definition inheriting from cl_gui_alv_grid
   public
   final
   create public .
@@ -10,11 +10,15 @@ public section.
     importing
       !IT_DATA type ZUA_J1UN_XML_SELECTOR=>TY_TT_DATA .
   methods DISPLAY_REPORT .
+  methods GET_SELECTED_LINES
+    returning
+      value(RT_LINES) type ZUA_J1UN_XML_SELECTOR=>TY_TT_DATA .
 protected section.
 private section.
 
   class ZUA_J1UN_XML_SELECTOR definition load .
-  data MT_DATA type ZUA_J1UN_XML_SELECTOR=>TY_TT_DATA .
+  data AT_DATA type ZUA_J1UN_XML_SELECTOR=>TY_TT_DATA .
+  data MO_ALV type ref to CL_GUI_ALV_GRID .
 
   methods BUILD_FIELDCAT
     returning
@@ -60,14 +64,14 @@ endmethod.
 
 
 method constructor.
-  mt_data = it_data.
+  at_data = it_data.
 endmethod.
 
 
 method display_report.
 
   data:
-    lo_alv       type ref to cl_gui_alv_grid,
+    "lo_alv       type ref to cl_gui_alv_grid,
     lt_fieldcat  type lvc_t_fcat,
     ls_layout    type lvc_s_layo,
     lt_excluding type ui_functions.
@@ -77,7 +81,7 @@ method display_report.
   ls_layout    = me->build_layout( ).
   lt_excluding = me->exclude_buttons( ).
 
-  create object lo_alv
+  create object mo_alv
     exporting
       i_parent = cl_gui_container=>screen0
     exceptions
@@ -91,7 +95,7 @@ method display_report.
     " Add error handling here
   endif.
 
-  call method lo_alv->set_table_for_first_display
+  call method mo_alv->set_table_for_first_display
     exporting
       i_save               = 'A'
       i_default            = 'X'
@@ -131,6 +135,37 @@ method exclude_buttons.
   _add_exclude cl_gui_alv_grid=>mc_fc_loc_append_row.
   _add_exclude cl_gui_alv_grid=>mc_fc_check.
   _add_exclude cl_gui_alv_grid=>mc_fc_refresh.
+
+endmethod.
+
+
+method get_selected_lines.
+
+  data:
+    lt_rows type lvc_t_row,
+    ls_row  type lvc_s_row,
+    ls_line like line of rt_lines.
+
+  field-symbols:
+    <xml_files> type standard table,
+    <xml_file>  type j_1ufdi_file_tbl.
+
+  call method mo_alv->get_selected_rows
+    importing
+      et_index_rows = lt_rows.
+
+  if lines( lt_rows ) is initial.
+    return. "raise exception type.
+  endif.
+
+*  assign mo_alv-> mt_outtab->* to <xml_files>.
+
+*  loop at lt_rows into ls_row.
+*    read table <xml_files> assigning <xml_file> index ls_row-index.
+*    check sy-subrc is initial.
+*    move-corresponding <xml_file> to ls_line.
+*    append ls_line to rt_line.
+*  endloop.
 
 endmethod.
 ENDCLASS.

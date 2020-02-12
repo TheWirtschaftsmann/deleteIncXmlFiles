@@ -6,12 +6,20 @@
 report zua_j1un_delete_xml_files.
 
 include zua_j1un_delete_xml_top.
-include zua_j1un_delete_xml_controller.
 include zua_j1un_delete_xml_sel_screen.
-include zua_j1un_delete_xml_sel_events.
 include zua_j1un_delete_xml_alv.
+include zua_j1un_delete_xml_controller.
 
 start-of-selection.
 
-  perform main.
+  data: ls_selopt type ty_selopts.
+
+  ls_selopt-bukrs = s_bukrs[].
+  ls_selopt-gjahr = s_gjahr[].
+  ls_selopt-stcd1 = s_stcd1[].
+  ls_selopt-xblnr = s_xblnr[].
+
+  create object lo_controller exporting is_selopts = ls_selopt.
   set screen 100.
+
+  include zua_j1un_delete_xml_sel_events.
