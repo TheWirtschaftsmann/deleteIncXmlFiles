@@ -4,7 +4,7 @@
   class lcl_controller definition deferred.
 
   data: ok_code       type sy-ucomm,
-        lo_controller type ref to lcl_controller.
+        go_controller type ref to lcl_controller.
 
   types:
     ty_bukrs_range type range of bukrs,
