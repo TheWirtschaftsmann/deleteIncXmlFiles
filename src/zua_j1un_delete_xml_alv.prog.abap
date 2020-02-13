@@ -9,8 +9,9 @@ end-of-definition.
 class lcl_view definition inheriting from cl_gui_alv_grid.
   public section.
     methods: constructor importing iv_parent type ref to cl_gui_container.
-    methods: setup_alv   changing  ct_data   type zua_j1un_xml_selector=>ty_tt_data.
-    methods: get_selected_lines returning value(rt_lines) type zua_j1un_xml_selector=>ty_tt_data.
+    methods: setup_alv   changing  ct_data   type ty_tt_files.
+    methods: get_selected_lines returning value(rt_lines) type ty_tt_files.
+    methods: refresh_alv.
   private section.
     methods: build_fieldcatalog returning value(rt_fieldcat)  type lvc_t_fcat.
     methods: build_layout       returning value(rs_layout)    type lvc_s_layo.
@@ -115,4 +116,14 @@ class lcl_view implementation.
       append ls_line to rt_lines.
     endloop.
   endmethod.
+
+  method refresh_alv.
+    data: ls_stable type lvc_s_stbl.
+    break-point.
+    ls_stable-row = 'X'.
+    ls_stable-col = 'X'.
+
+    me->refresh_table_display( is_stable = ls_stable ).
+  endmethod.
+
 endclass.

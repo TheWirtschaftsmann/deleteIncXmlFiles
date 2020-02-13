@@ -11,8 +11,9 @@ class lcl_controller definition.
   private section.
     data:
           o_view       type ref to lcl_view,
+          o_files      type ref to lcl_xml_files,
           as_selopts   type ty_selopts,
-          at_xml_files type zua_j1un_xml_selector=>ty_tt_data.
+          at_xml_files type ty_tt_files.
     methods: delete_xml_files.
 endclass.
 
@@ -27,11 +28,11 @@ class lcl_controller implementation.
   endmethod.
 
   method process_before_output.
-    at_xml_files = zua_j1un_xml_selector=>select_xml_files(
-      ir_bukrs = as_selopts-bukrs
-      ir_gjahr = as_selopts-gjahr
-      ir_stcd1 = as_selopts-stcd1
-      ir_xblnr = as_selopts-xblnr ).
+
+    create object me->o_files
+      exporting is_selopts = as_selopts.
+
+    at_xml_files = me->o_files->select_files( ).
 
     create object me->o_view
       exporting
@@ -55,7 +56,7 @@ class lcl_controller implementation.
     data:
         lo_exception type ref to j_1ucx_di_processing_error,
         lv_err_msg   type string,
-        lt_xml_files type zua_j1un_xml_selector=>ty_tt_data,
+        lt_xml_files type ty_tt_files,
         ls_file_key  type j_1ufdi_file_key.
 
     field-symbols: <file> type j_1ufdi_file_tbl.
@@ -78,6 +79,8 @@ class lcl_controller implementation.
             " Issue a message
         endtry.
       endloop.
+
+      me->o_view->refresh_alv( ).
     else.
       " Issue warning message
     endif.

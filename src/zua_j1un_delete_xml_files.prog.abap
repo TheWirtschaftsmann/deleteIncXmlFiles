@@ -7,6 +7,7 @@ report zua_j1un_delete_xml_files.
 
 include zua_j1un_delete_xml_top.
 include zua_j1un_delete_xml_sel_screen.
+include zua_j1un_delete_xml_model.
 include zua_j1un_delete_xml_alv.
 include zua_j1un_delete_xml_controller.
 

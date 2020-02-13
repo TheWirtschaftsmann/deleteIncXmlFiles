@@ -19,3 +19,5 @@
       stcd1 type ty_stcd1_range,
       xblnr type ty_xblnr_range,
     end of ty_selopts.
+
+   types: ty_tt_files type standard table of j_1ufdi_file_tbl with default key.
