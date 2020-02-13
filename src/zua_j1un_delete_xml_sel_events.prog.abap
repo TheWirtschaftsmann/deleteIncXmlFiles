@@ -15,14 +15,5 @@ module status_100 output.
 endmodule.
 
 module handle_pai input.
-  data: lt_files type zua_j1un_xml_selector=>ty_tt_data. " TODO - refactor
-
-  case ok_code.
-    when 'BACK' or 'EXIT'.
-      leave to screen 0.
-    when 'DELETE'.
-*      lt_files = lo_controller->mo_view->get_selected_lines( ).
-    when 'CANCEL'.
-      leave program .
-  endcase.
+  go_controller->handle_user_action( ok_code ).
 endmodule.

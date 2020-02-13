@@ -1,5 +1,5 @@
 *&---------------------------------------------------------------------*
-*&  Include: UA_J1UN_DELETE_XML_SEL_SCREEN
+*&  Include for selection screen elements
 *&---------------------------------------------------------------------*
 tables: j_1ufdi_match_xml_document.
 

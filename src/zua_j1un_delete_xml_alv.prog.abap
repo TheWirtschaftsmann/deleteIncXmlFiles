@@ -10,6 +10,7 @@ class lcl_view definition inheriting from cl_gui_alv_grid.
   public section.
     methods: constructor importing iv_parent type ref to cl_gui_container.
     methods: setup_alv   changing  ct_data   type zua_j1un_xml_selector=>ty_tt_data.
+    methods: get_selected_lines returning value(rt_lines) type zua_j1un_xml_selector=>ty_tt_data.
   private section.
     methods: build_fieldcatalog returning value(rt_fieldcat)  type lvc_t_fcat.
     methods: build_layout       returning value(rs_layout)    type lvc_s_layo.
@@ -85,5 +86,33 @@ class lcl_view implementation.
     add_exclude cl_gui_alv_grid=>mc_fc_loc_append_row.
     add_exclude cl_gui_alv_grid=>mc_fc_check.
     add_exclude cl_gui_alv_grid=>mc_fc_refresh.
+  endmethod.
+
+  method get_selected_lines.
+    data:
+      lt_rows type lvc_t_row,
+      ls_row  type lvc_s_row,
+      ls_line like line of rt_lines.
+
+    field-symbols:
+      <xml_files> type standard table,
+      <xml_file>  type j_1ufdi_file_tbl.
+
+    call method me->get_selected_rows
+      importing
+        et_index_rows = lt_rows.
+
+    if lines( lt_rows ) is initial.
+      return.
+    endif.
+
+    assign me->mt_outtab->* to <xml_files>.
+
+    loop at lt_rows into ls_row.
+      read table <xml_files> assigning <xml_file> index ls_row-index.
+      check sy-subrc is initial.
+      move-corresponding <xml_file> to ls_line.
+      append ls_line to rt_lines.
+    endloop.
   endmethod.
 endclass.
