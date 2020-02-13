@@ -21,6 +21,6 @@ start-of-selection.
   ls_selopt-xblnr = s_xblnr[].
 
   create object go_controller exporting is_selopts = ls_selopt.
-  set screen 100.
+  call screen 100.
 
   include zua_j1un_delete_xml_sel_events.

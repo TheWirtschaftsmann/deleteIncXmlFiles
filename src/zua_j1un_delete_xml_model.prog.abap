@@ -10,7 +10,7 @@ class lcl_xml_files definition.
 
     methods: constructor  importing is_selopts          type ty_selopts.
     methods: select_files returning value(rt_xml_files) type ty_tt_files.
-
+    methods: delete_files importing it_xml_files        type ty_tt_files.
 endclass.
 
 class lcl_xml_files implementation.
@@ -30,5 +30,15 @@ class lcl_xml_files implementation.
         and direction = j1udi_dxd_direction_in
         and ( doc_type = j1udi_typ_taxinv
          or doc_type = j1udi_typ_taxcorr ).
+
+    at_xml_files = rt_xml_files.
+  endmethod.
+
+  method delete_files.
+    field-symbols: <file> like line of it_xml_files.
+
+    loop at it_xml_files assigning <file>.
+      delete me->at_xml_files where bukrs = <file>-bukrs and num = <file>-num and gjahr = <file>-gjahr.
+    endloop.
   endmethod.
 endclass.

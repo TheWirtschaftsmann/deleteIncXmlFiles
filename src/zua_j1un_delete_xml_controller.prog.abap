@@ -15,6 +15,7 @@ class lcl_controller definition.
           as_selopts   type ty_selopts,
           at_xml_files type ty_tt_files.
     methods: delete_xml_files.
+    methods: update_list_of_xml_files.
 endclass.
 
 class lcl_controller implementation.
@@ -43,12 +44,10 @@ class lcl_controller implementation.
 
   method handle_user_action.
     case ok_code.
-      when 'BACK' or 'EXIT'.
-        leave to screen 0.
       when 'DELETE'.
-        delete_xml_files( ).
-      when 'CANCEL'.
-        leave program .
+        me->delete_xml_files( ).
+      when others.
+        " Do nothing, reserved for future use
     endcase.
   endmethod.
 
@@ -80,10 +79,22 @@ class lcl_controller implementation.
         endtry.
       endloop.
 
+      me->o_files->delete_files( lt_xml_files ).
+      me->update_list_of_xml_files( ).
       me->o_view->refresh_alv( ).
     else.
       " Issue warning message
     endif.
 
+  endmethod.
+
+  method update_list_of_xml_files.
+
+    data: ls_xml_file like line of at_xml_files.
+    clear: me->at_xml_files.
+
+    loop at o_files->at_xml_files[] into ls_xml_file.
+      append ls_xml_file to me->at_xml_files.
+    endloop.
   endmethod.
 endclass.

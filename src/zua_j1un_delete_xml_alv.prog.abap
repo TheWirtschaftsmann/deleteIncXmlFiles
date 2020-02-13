@@ -119,7 +119,7 @@ class lcl_view implementation.
 
   method refresh_alv.
     data: ls_stable type lvc_s_stbl.
-    break-point.
+
     ls_stable-row = 'X'.
     ls_stable-col = 'X'.
 

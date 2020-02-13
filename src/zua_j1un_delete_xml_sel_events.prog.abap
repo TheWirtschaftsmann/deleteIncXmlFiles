@@ -1,5 +1,5 @@
 *&---------------------------------------------------------------------*
-*&  Include: ZUA_J1UN_DELETE_XML_SEL_EVENTS
+*&  Include for selection screen events
 *&---------------------------------------------------------------------*
 module status_100 output.
   data:
@@ -16,4 +16,11 @@ endmodule.
 
 module handle_pai input.
   go_controller->handle_user_action( ok_code ).
+
+  case ok_code.
+      when 'BACK' or 'EXIT'.
+        leave to screen 0.
+      when 'CANCEL'.
+        leave program .
+    endcase.
 endmodule.
