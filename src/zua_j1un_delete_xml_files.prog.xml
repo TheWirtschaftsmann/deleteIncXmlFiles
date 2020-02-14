@@ -226,6 +226,12 @@
     </item>
     <item>
      <ID>I</ID>
+     <KEY>101</KEY>
+     <ENTRY>User is not authorized for selected company code</ENTRY>
+     <LENGTH>132</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
      <KEY>200</KEY>
      <ENTRY>Deletion of XML-files</ENTRY>
      <LENGTH>37</LENGTH>
@@ -306,6 +312,12 @@
       </item>
       <item>
        <ID>I</ID>
+       <KEY>101</KEY>
+       <ENTRY>У користувача немає повноважень для вибраної балансової одиниці</ENTRY>
+       <LENGTH>132</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
        <KEY>200</KEY>
        <ENTRY>Видалення XML-файлів</ENTRY>
        <LENGTH>37</LENGTH>
@@ -382,6 +394,12 @@
        <ID>I</ID>
        <KEY>100</KEY>
        <ENTRY>Перечень непривязаных XML-файлов</ENTRY>
+       <LENGTH>132</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>101</KEY>
+       <ENTRY>У пользователя нету полномочий для указаной БЕ</ENTRY>
        <LENGTH>132</LENGTH>
       </item>
       <item>

@@ -1,6 +1,6 @@
 *&---------------------------------------------------------------------*
-*& Program: ZUA_J1UN_DELETE_XML_FILES
-*& Purpose: Delete unnecessary XML-files for incoming tax invoices
+*& Purpose: deletion of unnecessary XML-files for incoming tax docs.
+*& Developed by: Bohdan Petrushchak, 2020
 *&---------------------------------------------------------------------*
 
 report zua_j1un_delete_xml_files.
@@ -18,7 +18,8 @@ start-of-selection.
   gs_selopt-stcd1 = s_stcd1[].
   gs_selopt-xblnr = s_xblnr[].
 
-  "perform check_auth.
+  perform auth_check.
+
   create object go_controller exporting is_selopts = gs_selopt.
   call screen 100.
 
