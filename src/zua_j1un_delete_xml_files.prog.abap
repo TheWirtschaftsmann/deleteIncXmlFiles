@@ -18,6 +18,7 @@ start-of-selection.
   gs_selopt-stcd1 = s_stcd1[].
   gs_selopt-xblnr = s_xblnr[].
 
+  "perform check_auth.
   create object go_controller exporting is_selopts = gs_selopt.
   call screen 100.
 
