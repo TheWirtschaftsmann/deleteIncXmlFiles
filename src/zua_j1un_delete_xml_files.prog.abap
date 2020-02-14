@@ -13,14 +13,12 @@ include zua_j1un_delete_xml_controller.
 
 start-of-selection.
 
-  data: ls_selopt type ty_selopts.
+  gs_selopt-bukrs = s_bukrs[].
+  gs_selopt-gjahr = s_gjahr[].
+  gs_selopt-stcd1 = s_stcd1[].
+  gs_selopt-xblnr = s_xblnr[].
 
-  ls_selopt-bukrs = s_bukrs[].
-  ls_selopt-gjahr = s_gjahr[].
-  ls_selopt-stcd1 = s_stcd1[].
-  ls_selopt-xblnr = s_xblnr[].
-
-  create object go_controller exporting is_selopts = ls_selopt.
+  create object go_controller exporting is_selopts = gs_selopt.
   call screen 100.
 
   include zua_j1un_delete_xml_sel_events.

@@ -3,9 +3,6 @@
 *&---------------------------------------------------------------------*
   class lcl_controller definition deferred.
 
-  data: ok_code       type sy-ucomm,
-        go_controller type ref to lcl_controller.
-
   types:
     ty_bukrs_range type range of bukrs,
     ty_gjahr_range type range of gjahr,
@@ -20,4 +17,8 @@
       xblnr type ty_xblnr_range,
     end of ty_selopts.
 
-   types: ty_tt_files type standard table of j_1ufdi_file_tbl with default key.
+  types: ty_tt_files  type standard table of j_1ufdi_file_tbl with default key.
+
+  data: ok_code       type sy-ucomm,
+        gs_selopt     type ty_selopts,
+        go_controller type ref to lcl_controller.
