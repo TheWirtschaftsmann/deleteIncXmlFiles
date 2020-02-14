@@ -16,6 +16,7 @@ class lcl_controller definition.
           at_xml_files type ty_tt_files.
     methods: delete_xml_files.
     methods: update_list_of_xml_files.
+    methods: validate_selected_lines_delete returning value(rv_yes) type abap_bool.
 endclass.
 
 class lcl_controller implementation.
@@ -79,9 +80,14 @@ class lcl_controller implementation.
         endtry.
       endloop.
 
-      me->o_files->delete_files( lt_xml_files ).
-      me->update_list_of_xml_files( ).
-      me->o_view->refresh_alv( ).
+      " Validate deletion of XML-files
+      if me->validate_selected_lines_delete( ) = abap_false.
+        return.
+      else.
+        me->o_files->delete_files( lt_xml_files ).
+        me->update_list_of_xml_files( ).
+        me->o_view->refresh_alv( ).
+      endif.
     else.
       " Issue warning message
     endif.
@@ -96,5 +102,32 @@ class lcl_controller implementation.
     loop at o_files->at_xml_files[] into ls_xml_file.
       append ls_xml_file to me->at_xml_files.
     endloop.
+  endmethod.
+
+  method validate_selected_lines_delete.
+    data:
+      lv_answer  type char1,
+      lv_message type string.
+
+    rv_yes     = abap_true.
+    lv_message = text-201.
+
+    call function 'POPUP_TO_CONFIRM'
+      exporting
+        titlebar              = text-200
+        text_question         = lv_message
+        text_button_1         = text-202
+        text_button_2         = text-203
+        default_button        = '1'
+        display_cancel_button = ''
+        start_row             = 5
+      importing
+        answer                = lv_answer
+      exceptions
+        others                = 1.
+
+    if lv_answer <> '1'.
+      rv_yes = abap_false.
+    endif.
   endmethod.
 endclass.
