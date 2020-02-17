@@ -23,7 +23,7 @@ Some technical notes:
 
 Selection screen allows filtering of values based on company code, fiscal year and tax payer number i.e. tax number 1 (*INN*) of vendor *LFA1-STCD1*. Additionally, you can filter the values based on tax document number.
 
-![](C:\GIT\deleteIncXmlFiles\screens\00_selection_screen.jpg)
+![](https://github.com/TheWirtschaftsmann/deleteIncXmlFiles/blob/master/screens/00_selection_screen.jpg)
 
 ### Display of report values
 
