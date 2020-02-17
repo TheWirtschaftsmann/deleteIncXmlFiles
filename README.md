@@ -29,4 +29,4 @@ Selection screen allows filtering of values based on company code, fiscal year a
 
 The report displays all attributes of XML-files from table *J_1UFDI_FILE_TBL*. You can select several XML-files and delete them:
 
-![](C:\GIT\deleteIncXmlFiles\screens\01_report_values.jpg)
+![](https://github.com/TheWirtschaftsmann/deleteIncXmlFiles/blob/master/screens/01_report_values.jpg)
