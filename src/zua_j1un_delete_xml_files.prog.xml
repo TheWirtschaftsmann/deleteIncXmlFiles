@@ -232,6 +232,24 @@
     </item>
     <item>
      <ID>I</ID>
+     <KEY>102</KEY>
+     <ENTRY>No data selected</ENTRY>
+     <LENGTH>37</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>103</KEY>
+     <ENTRY>Select XML-files that should be deleted</ENTRY>
+     <LENGTH>72</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>104</KEY>
+     <ENTRY>XML-files were deleted</ENTRY>
+     <LENGTH>22</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
      <KEY>200</KEY>
      <ENTRY>Deletion of XML-files</ENTRY>
      <LENGTH>37</LENGTH>
@@ -318,6 +336,24 @@
       </item>
       <item>
        <ID>I</ID>
+       <KEY>102</KEY>
+       <ENTRY>Дані не вибрано</ENTRY>
+       <LENGTH>37</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>103</KEY>
+       <ENTRY>Виберіть XML-файли, які потрібно видалити</ENTRY>
+       <LENGTH>72</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>104</KEY>
+       <ENTRY>XML-файли видалено</ENTRY>
+       <LENGTH>22</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
        <KEY>200</KEY>
        <ENTRY>Видалення XML-файлів</ENTRY>
        <LENGTH>37</LENGTH>
@@ -401,6 +437,24 @@
        <KEY>101</KEY>
        <ENTRY>У пользователя нету полномочий для указаной БЕ</ENTRY>
        <LENGTH>132</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>102</KEY>
+       <ENTRY>Данные не выбраны</ENTRY>
+       <LENGTH>37</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>103</KEY>
+       <ENTRY>Выберите XML-файлы, которые нужно удалить</ENTRY>
+       <LENGTH>72</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>104</KEY>
+       <ENTRY>XML-файлы удалено</ENTRY>
+       <LENGTH>22</LENGTH>
       </item>
       <item>
        <ID>I</ID>

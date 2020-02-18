@@ -7,7 +7,6 @@ form auth_check.
   data:
     lv_auth_is_ok type abap_bool,
     lv_bukrs      type char40,
-    lv_message    type string,
     lt_bukrs      type table of bukrs,
     ls_bukrs      like line of lt_bukrs.
 
@@ -46,8 +45,7 @@ form auth_check.
   endloop.
 
   if lv_auth_is_ok = abap_false.
-    lv_message = text-101.
-    message lv_message type 'I' display like 'E'.
+    message text-101 type 'I' display like 'E'.
     leave list-processing.
   else.
     " Continue

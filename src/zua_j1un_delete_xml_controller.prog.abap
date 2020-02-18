@@ -31,10 +31,18 @@ class lcl_controller implementation.
 
   method process_before_output.
 
+    data: lv_message type string.
+
     create object me->o_files
       exporting is_selopts = as_selopts.
 
     at_xml_files = me->o_files->select_files( ).
+
+    if lines( at_xml_files ) = 0.
+      lv_message = text-102.
+      message lv_message type 'I' display like 'E'.
+      return.
+    endif.
 
     create object me->o_view
       exporting
@@ -55,7 +63,7 @@ class lcl_controller implementation.
   method delete_xml_files.
     data:
         lo_exception type ref to j_1ucx_di_processing_error,
-        lv_err_msg   type string,
+        lv_message   type string,
         lt_xml_files type ty_tt_files,
         ls_file_key  type j_1ufdi_file_key.
 
@@ -74,9 +82,9 @@ class lcl_controller implementation.
         try.
           j_1ucl_di_files=>delete_file( ls_file_key ).
           catch j_1ucx_di_processing_error into lo_exception.
-            lv_err_msg = lo_exception->get_text( ).
+            lv_message = lo_exception->get_text( ).
+            message lv_message type 'I' display like 'E'.
             exit.
-            " Issue a message
         endtry.
       endloop.
 
@@ -87,9 +95,11 @@ class lcl_controller implementation.
         me->o_files->delete_files( lt_xml_files ).
         me->update_list_of_xml_files( ).
         me->o_view->refresh_alv( ).
+
+        message text-104 type 'S'.
       endif.
     else.
-      " Issue warning message
+      message text-103 type 'I' display like 'E'.
     endif.
 
   endmethod.
