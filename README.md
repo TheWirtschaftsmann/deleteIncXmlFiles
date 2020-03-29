@@ -11,6 +11,8 @@ XML-files for above mentioned tax documents are being uploaded to SAP as part of
 
 However not all XML-files are necessary for matching e.g. XML-files for zero tax correction invoices. The number of these unnecessary XML-files increases as times passes by, cluttering the system and distracting the users.
 
+Small update: recently SAP issued OSS-note *2901919* "J1UFMATCHING: Deletion of Incoming XML", which delivers the same functionality for program J_1UFDI_MATCHING_XML_WITH_FI. Deletion mode will be available for program modes "Linking Mode" or "VAT Invoice Creation Mode".
+
 ### Technical notes
 
 Some technical notes:
